@@ -1,10 +1,14 @@
-(function (global, Md) {
+; (function (global, Md) {
+  
   global.Md = Md();
+
 })(this, function () {
+  "use strict";
+
   function Md (options) {
     options = options || {};
     this.mdData = options.mdData || '';
-    this.fileName = options.fileName;
+    this.fileName = options.fileName || this.generateName();
   }
 
   Md.prototype.export = function () {
@@ -12,12 +16,12 @@
     var blob = new Blob([this.mdData], { type: "application/octet-stream", });
     // for IE
     if (window.navigator && window.navigator.msSaveOrOpenBlob) {
-      window.navigator.msSaveOrOpenBlob(blob, this.fileName || this.generateName());
+      window.navigator.msSaveOrOpenBlob(blob, this.fileName);
     } else {
-      // for Not-IE (chrome, firefox.)
+      // for Non-IE (chrome, firefox.)
       var a = document.createElement('a');
       a.href = window.URL.createObjectURL(blob);
-      a.download = this.fileName || this.generateName();
+      a.download = this.fileName;
       a.click();
       window.URL.revokeObjectURL(a.href); //释放内存
     }
