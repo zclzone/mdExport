@@ -1,8 +1,9 @@
 # md-export
 
 #### version 1.0
+#### version 1.1 兼容IE浏览器
 
-非常轻量的md文件导出组件，只有43行代码，没有任何依赖，有用请star，谢谢
+非常轻量的md文件导出组件，没有任何依赖，如有用请点star，谢谢
 
 > 如何使用
 ```javascript
